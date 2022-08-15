@@ -1,0 +1,12 @@
+build/
+dist/
+nonebot_plugin_admin.egg-info/
+.idea/
+.idea
+/.venv/
+/nonebot_plugin_admin_hello.egg-info/
+/venv/
+/venv/Lib/
+/venv/Scripts/
+/nonebot_plugin_admin_hello.egg-info/
+nonebot_plugin_admin_hello.egg-info/PKG-INFO
