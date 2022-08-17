@@ -1,14 +1,14 @@
 from setuptools import setup, find_packages
 
 setup(name='nonebot_plugin_admin_hello',
-      version='0.6.4',
+      version='0.6.5',
       description='nonebot plugin admin hello',
       long_description=open('README.md', 'r', encoding='utf-8').read(),
       long_description_content_type='text/markdown',
       author='HuYihe',
       author_email='2812856215@qq.com',
-      packages=find_packages(),  # 系统自动从当前目录开始找包
-
+      packages=find_packages(exclude=()),  # 系统自动从当前目录开始找包
+      include_package_data=True,
       requires=['aiofiles',
                 'fuzzyfinder',
                 'httpx',

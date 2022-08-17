@@ -6,19 +6,19 @@
 # @File    : welcome.py
 # @Software: PyCharm
 
+import gc
 import random
 from asyncio import sleep
-from pathlib import Path
-import requests, json
+
+import json
+import requests
 from nonebot import get_driver, on_request, on_notice, on_command
 from nonebot.adapters.onebot.v11 import Bot, GroupIncreaseNoticeEvent, \
     MessageSegment, Message, GroupMessageEvent
-import gc
+
+from .path import *
 from .welcome_utils.config import config
 from .welcome_utils.message_util import MessageBuild
-from .path import *
-from .config import plugin_config
-
 
 superuser = int(list(get_driver().config.superusers)[0])
 
@@ -59,7 +59,7 @@ async def _(bot: Bot, event: GroupMessageEvent):
     version_data = json.loads(new_version)
     version = version_data[0]
     __help__version__ = (
-            "当前版本：" + '0.6.4 ' + "\n" +
+            "当前版本：" + version_id + "\n" +
             "最新正式版本：" + (version['version']) + "\n" +
             "beta版本：" + (version['version_beta']) + "\n" +
             "Copyright © by " + (version['author']) + " All Rights Reserved." + "\n" +
