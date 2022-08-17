@@ -48,7 +48,7 @@ async def _(bot: Bot, event: GroupMessageEvent):
     version_data = json.loads(new_version)
     version = version_data[0]
     __help__version__ = (
-            "当前版本：" + '0.6.3 ' + "\n" +
+            "当前版本：" + '0.6.4 ' + "\n" +
             "最新正式版本：" + (version['version']) + "\n" +
             "beta版本：" + (version['version_beta']) + "\n" +
             "Copyright © by " + (version['author']) + " All Rights Reserved." + "\n" +

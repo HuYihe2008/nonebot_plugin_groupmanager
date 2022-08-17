@@ -7,9 +7,9 @@
 **你的star是我的动力**  
 **↓**  
 <img src="https://img.shields.io/github/stars/HuYihe2008/nonebot_plugin_admin.svg?style=social">  
-# 简易群管 （入群欢迎插件公测ing）  
+# 多功能简易群管  
    **神奇的有了pypi并且是最新的 github最新**  
-  _✨ NoneBot2 (有点不)简易群管✨ _    
+  _✨ NoneBot2 多功能简易群管✨ _    
 
  
 [//]: # ([![wakatime]&#40;https://wakatime.com/badge/user/e4795d94-d154-4c3d-a94b-b655c82e57f4/project/d4a8cb5e-ee86-4ad9-99e5-48873f38c3bd.svg&#41;]&#40;https://wakatime.com/badge/user/e4795d94-d154-4c3d-a94b-b655c82e57f4/project/d4a8cb5e-ee86-4ad9-99e5-48873f38c3bd&#41;)
@@ -22,7 +22,7 @@
 ## 本更新基于yzyyz1387/nonebot_plugin_admin添加新功能，若您对原版插件还不了解，请先前往 [这里](https://github.com/yzyyz1387/nonebot_plugin_admin) 获取详情
 
 # 公告区：
-- 十分抱歉我们在v0.4系列版本中犯下的目录引用错误，现已在v0.5系列中修复！请各位及时更新！
+- 更新0.6系列，新增了定时发送消息
 - nb安装已同步！
  
 # 权限说明：见下方指令↓
