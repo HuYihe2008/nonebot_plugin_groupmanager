@@ -52,4 +52,4 @@ time_scop_map = {
     7: [14 * 24 * 60 * 60, 2591999]
 }
 
-version_id = "v0.6.5.1"
+version_id = "v0.6.5.2"
