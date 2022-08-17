@@ -299,7 +299,9 @@ send_time_night = "23 0"    # 选填 晚上发送时间默认为22:00
 
 <details>
   <summary> <h2> 更新日志</h2></summary>  
-  
+- 0.6.5
+  - 优化了默认配置，新增了欢迎开关
+  - 更新了版本获取
 - 0.3.21
   - 优化默认配置；同时增加一个配置项：设置禁言等基础操作是否在 qq 返回操作结果 [#18](https://github.com/yzyyz1387/nonebot_plugin_admin/pull/18)
   - 修复`禁@xxx`的buggi
