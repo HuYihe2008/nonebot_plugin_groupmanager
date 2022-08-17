@@ -102,7 +102,8 @@ dirs = [config_path,
         user_violation_info_path,
         group_message_data_path,
         error_path,
-        bg_path]
+        bg_path
+        ]
 
 
 async def init():
@@ -122,8 +123,8 @@ async def init():
     if not os.path.exists(ttf_name):
         await mk("file", ttf_name, "wb", url="https://fastly.jsdelivr.net/gh/yzyyz1387/blogimages/msyhblod.ttf",
                  dec="资源字体")
-    if not os.path.exists(bg_path):
-        await mk("file", bg_path, "wb", url="https://cdn.jsdelivr.net/gh/HuYihe2008/nonebot_plugin_manager@main/nonebot_plugin_admin_hello/bg.jpg",
+    if not os.path.exists(bg_file):
+        await mk("file", bg_file, "wb", url="https://cdn.jsdelivr.net/gh/HuYihe2008/nonebot_plugin_manager@main/nonebot_plugin_admin_hello/bg.jpg",
                  dec="bg.jpg")
     if not os.path.exists(limit_word_path):
         await mk("file", limit_word_path, "w", url="https://fastly.jsdelivr.net/gh/yzyyz1387/nwafu/f_words/f_word_s",
