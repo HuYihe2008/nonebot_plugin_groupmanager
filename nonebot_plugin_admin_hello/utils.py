@@ -101,7 +101,8 @@ dirs = [config_path,
         limit_word_path_custom,
         user_violation_info_path,
         group_message_data_path,
-        error_path]
+        error_path,
+        bg_path]
 
 
 async def init():
