@@ -1,3 +1,11 @@
+# python3
+# -*- coding: utf-8 -*-
+# @Time    : 2022/8/17
+# @Author  : HuYihe
+# @Email   : 2812856215@qq.com
+# @File    : welcome.py
+# @Software: PyCharm
+
 import random
 from asyncio import sleep
 from pathlib import Path
@@ -8,6 +16,9 @@ from nonebot.adapters.onebot.v11 import Bot, GroupIncreaseNoticeEvent, \
 import gc
 from .welcome_utils.config import config
 from .welcome_utils.message_util import MessageBuild
+from .path import *
+from .config import plugin_config
+
 
 superuser = int(list(get_driver().config.superusers)[0])
 
