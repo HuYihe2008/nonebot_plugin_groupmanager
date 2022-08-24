@@ -28,7 +28,7 @@ notice_handle = on_notice(priority=5, block=True)
 
 @notice_handle.handle()
 async def GroupNewMember(bot: Bot, event: GroupIncreaseNoticeEvent):
-    greet_emoticon = MessageBuild.Image(Path() / 'data' / 'img' / 'bg.jpg', mode='RGBA')
+    greet_emoticon = MessageBuild.Image(bg_file, mode='RGBA')
     if event.user_id == event.self_id:
         await bot.send_group_msg(group_id=event.group_id, message=Message(
             MessageSegment.text('这是哪里？哦？让我康康！\n') + greet_emoticon))
@@ -42,7 +42,7 @@ caidan = on_command("菜单", aliases={"cd"})
 
 @caidan.handle()
 async def _(bot: Bot, event: GroupMessageEvent):
-    greet_emoticon = MessageBuild.Image(Path() / 'data' / 'img' / 'bg.jpg', mode='RGBA')
+    greet_emoticon = MessageBuild.Image(bg_file, mode='RGBA')
     await bot.send_group_msg(group_id=event.group_id, message=Message(
         MessageSegment.at(event.user_id) + MessageSegment.text(__cd__) + greet_emoticon))
 
@@ -52,7 +52,7 @@ version = on_command("群管版本", aliases={"admin -v"})
 
 @version.handle()
 async def _(bot: Bot, event: GroupMessageEvent):
-    greet_emoticon = MessageBuild.Image(Path() / 'data' / 'img' / 'bg.jpg', mode='RGBA')
+    greet_emoticon = MessageBuild.Image(bg_file, mode='RGBA')
     await sleep(random.randint(4, 8))
     version_url = requests.get("https://api.jamyido.tk/admin-version.json")
     new_version = version_url.text
@@ -63,7 +63,7 @@ async def _(bot: Bot, event: GroupMessageEvent):
             "最新正式版本：" + (version['version']) + "\n" +
             "beta版本：" + (version['version_beta']) + "\n" +
             "Copyright © by " + (version['author']) + " All Rights Reserved." + "\n" +
-            "https://jamyido.tk/"
+            "https://github.com/yzyyz1387/nonebot_plugin_admin"
     )
     await bot.send_group_msg(group_id=event.group_id, message=Message(
         MessageSegment.at(event.user_id) + MessageSegment.text(
