@@ -23,3 +23,4 @@ aiofiles>=0.8.0
 littlepaimon_utils>=1.0.2
 requests
 pydantic~=1.9.2
+tencentcloud-sdk-python
