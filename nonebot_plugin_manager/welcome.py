@@ -71,7 +71,7 @@ async def _(bot: Bot, event: GroupMessageEvent):
     gc.collect()
 
 
-__help_plugin_name__ = "简易群管"
+__help_plugin_name__ = "多功能群管"
 __permission__ = 1
 __cd__ = """
 【初始化】：
