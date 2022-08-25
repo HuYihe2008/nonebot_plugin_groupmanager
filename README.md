@@ -27,30 +27,30 @@
 **权限说明：见下方指令↓**
 
 ## 安装💿(pip)
-- 正式版 `pip install nonebot-plugin-admin-hello`
+- 正式版 `pip install nonebot-plugin-groupmanager`
 
-- beta版 `pip install nonebot-plugin-groupmanager`
+- beta版 `pip install nonebot-plugin-groupmanager-beta`
 
 ### 导入📲
 在**bot.py** 导入，语句：
-- 正式版 `nonebot.load_plugin("nonebot_plugin_admin-hello")`
+- 正式版 `nonebot.load_plugin("nonebot_plugin_groupmanager")`
 
-- beta版 `nonebot.load_plugin("nonebot_plugin_groupmanager")`
+- beta版 `nonebot.load_plugin("nonebot_plugin_groupmanager_beta")`
 
 请注意与nonebot版本适配，匹配请查看：[更新](#%E6%9B%B4%E6%96%B0-1)
 **Python 3.9+**
 
 ## 安装💿(nb plugin)
-- 正式版 `nb plugin install nonebot-plugin-admin-hello`
+- 正式版 `nb plugin install nonebot-plugin-groupmanager`
 
-- beta版 `nb plugin install nonebot-plugin-groupmanager`
+- beta版 `nb plugin install nonebot-plugin-groupmanager-beta`
 
 
 ## 更新
 
-- 正式版 `pip install --upgrade nonebot-plugin-admin-hello `
+- 正式版 `pip install --upgrade nonebot-plugin-groupmanager `
 
-- beta版 `pip install --upgrade nonebot-plugin-groupmanager `
+- beta版 `pip install --upgrade nonebot-plugin-groupmanager-beta `
 
 ## 配置
 **鉴黄配置**：  
