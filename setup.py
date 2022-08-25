@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='nonebot_plugin_groupmanager',
-      version='1.0.1',
+      version='1.0.2',
       description='nonebot plugin QQ group manager',
       long_description=open('README.md', 'r', encoding='utf-8').read(),
       long_description_content_type='text/markdown',
