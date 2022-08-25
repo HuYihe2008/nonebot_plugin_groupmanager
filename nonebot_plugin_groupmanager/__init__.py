@@ -21,8 +21,6 @@ from nonebot.matcher import Matcher
 from nonebot.permission import SUPERUSER
 from . import (
     approve,
-    auto_ban,
-    auto_ban_,
     func_hook,
     group_request_verify,
     img_check,

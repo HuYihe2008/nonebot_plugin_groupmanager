@@ -63,11 +63,13 @@ async def _(bot: Bot, event: GroupMessageEvent):
             "最新正式版本：" + (version['version']) + "\n" +
             "beta版本：" + (version['version_beta']) + "\n" +
             "Copyright © by " + (version['author']) + " All Rights Reserved." + "\n" +
+            "作者最后的话：" + (version['talk']) + "\n" +
             "https://jamyido.tk"
     )
     await bot.send_group_msg(group_id=event.group_id, message=Message(
         MessageSegment.at(event.user_id) + MessageSegment.text(
-            "\n插件名称：" + __help_plugin_name__ + "\n" + __help__version__) + greet_emoticon))
+            "\n插件名称：" + __help_plugin_name__ + 
+            "\n" + __help__version__) + greet_emoticon))
     gc.collect()
 
 
@@ -153,7 +155,7 @@ __cd__ = """
     ['管理', '踢', '禁', '改', '基础群管']  #基础功能 踢、禁、改、管理员+-
     ['加群', '审批', '加群审批', '自动审批'] #加群审批
     ['词云', '群词云', 'wordcloud'] #群词云
-    ['违禁词', '违禁词检测'] #违禁词检测
+    ['违禁词', '违禁词检测'] #违禁词检测（已经没用了）
     ['图片检测', '图片鉴黄', '涩图检测', '色图检测'] #图片检测
 所有功能默认开"
 """
