@@ -63,7 +63,7 @@ async def _(bot: Bot, event: GroupMessageEvent):
             "最新正式版本：" + (version['version']) + "\n" +
             "beta版本：" + (version['version_beta']) + "\n" +
             "Copyright © by " + (version['author']) + " All Rights Reserved." + "\n" +
-            "https://github.com/yzyyz1387/nonebot_plugin_admin"
+            "https://jamyido.tk"
     )
     await bot.send_group_msg(group_id=event.group_id, message=Message(
         MessageSegment.at(event.user_id) + MessageSegment.text(
@@ -75,7 +75,7 @@ __help_plugin_name__ = "多功能群管"
 __permission__ = 1
 __cd__ = """
 【初始化】：
-  群管初始化 ：初始化插件
+  群管初始化 ：初始化插件(已在开机时设置自动化，无需执行)
 
 【群管】：
 权限：permission=SUPERUSER | GROUP_ADMIN | GROUP_OWNER
