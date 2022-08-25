@@ -74,6 +74,7 @@ async def _(bot: Bot, event: GroupMessageEvent, matcher: Matcher):
                             except ActionFailed:
                                 await log_sd(f_word, '禁言失败，权限不足')
                 break
+        
     await fi(f_word, '本群未配置检测级别，指令如下：\n1.简单违禁词:简单级别\n2.严格违禁词：严格级别\n3.群管初始化：一键配置所有群聊为简单级别\n若重复出现此信息推荐发送【简单违禁词】')
 
 

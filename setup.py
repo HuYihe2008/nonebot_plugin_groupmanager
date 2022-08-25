@@ -9,7 +9,7 @@ setup(name='nonebot_plugin_groupmanager',
       author_email='2812856215@qq.com',
       packages=find_packages(exclude=()),  # 系统自动从当前目录开始找包
       include_package_data=True,
-      requires=[
+      install_requires=[
       'aiofiles',
       'fuzzyfinder',
       'httpx',
