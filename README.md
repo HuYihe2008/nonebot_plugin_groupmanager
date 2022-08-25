@@ -9,8 +9,8 @@
 **你的star是我的动力**  
 **↓**  
 <img src="https://img.shields.io/github/stars/yzyyz1387/nonebot_plugin_admin.svg?style=social">  
-# 简易群管 （考研缓更）  
-   **pypi没更 github最新**  
+# 简易群管 （中考缓更）  
+   **pypi beta已更新 github最新**  
   _✨ NoneBot2 (有点不)简易群管✨ _    
 
  
@@ -21,27 +21,36 @@
 **欢迎 ISSUES PR**
 </div>  
 
-## 最近在忙毕设，插件暂不支持nonebot beta4，详情及解决方法见 [#22](https://github.com/yzyyz1387/nonebot_plugin_admin/issues/22)  
+# 公告区
+- beta已发布
  
 **权限说明：见下方指令↓**
 
 ## 安装💿(pip)
-`pip install nonebot-plugin-admin`
+- 正式版 `pip install nonebot-plugin-admin-hello`
+
+- beta版 `pip install nonebot-plugin-groupmanager`
 
 ### 导入📲
 在**bot.py** 导入，语句：
-`nonebot.load_plugin("nonebot_plugin_admin")`
+- 正式版 `nonebot.load_plugin("nonebot_plugin_admin-hello")`
+
+- beta版 `nonebot.load_plugin("nonebot_plugin_groupmanager")`
 
 请注意与nonebot版本适配，匹配请查看：[更新](#%E6%9B%B4%E6%96%B0-1)
 **Python 3.9+**
 
 ## 安装💿(nb plugin)
-`nb plugin install nonebot-plugin-admin`
+- 正式版 `nb plugin install nonebot-plugin-admin-hello`
+
+- beta版 `nb plugin install nonebot-plugin-groupmanager`
 
 
 ## 更新
 
-`pip install --upgrade nonebot-plugin-admin `
+- 正式版 `pip install --upgrade nonebot-plugin-admin-hello `
+
+- beta版 `pip install --upgrade nonebot-plugin-groupmanager `
 
 ## 配置
 **鉴黄配置**：  
@@ -86,9 +95,10 @@ send_time_night = "23 0"    # 选填 晚上发送时间默认为22:00
 - 群词云功能所用库 wordcloud 未写入依赖，请自行安装：`pip install wordcloud` 安装失败参考：[WordCloud 第三方库安装失败原因及解决方法](https://www.freesion.com/article/4756295761/)
 - 一般情况下可正常使用，可能由于权重出现问题，matcher权重请自行查看代码
 - 使用`开关状态`指令查看各功能状态，首次使用可能会下载100Mb+的`Chromium`，请耐心等待
+- 推荐使用系统安装包进行安装chromium `dnf install chromium` `apt-get install chromium`
 ```
 【初始化】：
-  群管初始化 ：初始化插件
+  群管初始化 ：初始化插件(自动执行无需输入)
 
 【群管】：
 权限：permission=SUPERUSER | GROUP_ADMIN | GROUP_OWNER
