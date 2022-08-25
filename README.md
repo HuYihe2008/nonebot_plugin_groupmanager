@@ -8,7 +8,7 @@
   
 **你的star是我的动力**  
 **↓**  
-<img src="https://img.shields.io/github/stars/yzyyz1387/nonebot_plugin_admin.svg?style=social">  
+<img src="https://img.shields.io/github/stars/yzyyz1387/nonebot_plugin_groupmanager.svg?style=social">  
 # 简易群管 （中考缓更）  
    **pypi beta已更新 github最新**  
   _✨ NoneBot2 (有点不)简易群管✨ _    
