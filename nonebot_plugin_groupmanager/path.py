@@ -16,9 +16,6 @@ res_path = Path() / 'resource'
 re_img_path = Path() / 'resource' / 'imgs'
 ttf_name = Path() / 'resource' / 'msyhblod.ttf'
 limit_word_path = config_path / '违禁词.txt'
-limit_word_path_easy = config_path / '违禁词_简单.txt'
-limit_level = config_path / '违禁词监控等级.json'
-limit_word_path_custom = config_path / '用户自定违禁词'
 switcher_path = config_path / '开关.json'
 template_path = config_path / 'template'
 stop_words_path = config_path / 'stop_words'
@@ -52,4 +49,4 @@ time_scop_map = {
     7: [14*24*60*60, 2591999]
 }
 
-version_id = "v1.0"
+version_id = "v1.0.3"

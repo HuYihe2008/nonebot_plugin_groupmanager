@@ -36,13 +36,13 @@ cb_notice = plugin_config.callback_notice
 
 
 def At(data: str) -> Union[list[str], list[int], list]:
-    '''
+    """
     检测at了谁，返回[qq, qq, qq,...]
     包含全体成员直接返回['all']
     如果没有at任何人，返回[]
     :param data: event.json
     :return: list
-    '''
+    """
     try:
         qq_list = []
         data = json.loads(data)
@@ -58,12 +58,12 @@ def At(data: str) -> Union[list[str], list[int], list]:
 
 
 def Reply(data: str):
-    '''
+    """
     检测回复哪条消息，返回 reply 对象
     如果没有回复任何人，返回 None
     :param data: event.json()
     :return: dict | None
-    '''
+    """
     try:
         data = json.loads(data)
         if data['reply'] and data['reply']['message_id']:  # 待优化
@@ -75,11 +75,11 @@ def Reply(data: str):
 
 
 def MsgText(data: str):
-    '''
+    """
     返回消息文本段内容(即去除 cq 码后的内容)
     :param data: event.json()
     :return: str
-    '''
+    """
     try:
         data = json.loads(data)
         # 过滤出类型为 text 的【并且过滤内容为空的】
@@ -99,18 +99,16 @@ dirs = [config_path,
         re_img_path,
         stop_words_path,
         wordcloud_bg_path,
-        limit_word_path_custom,
         user_violation_info_path,
         group_message_data_path,
         error_path]
 
 
 async def init():
-    '''
+    """
     初始化配置文件
     :return:
-    '''
-    logger.info('Admin 插件 初始化文件检查')
+    """
     for d in dirs:
         if not os.path.exists(d):
             await mk('dir', d, mode=None)
@@ -120,16 +118,6 @@ async def init():
         await mk('file', config_group_admin, 'w', content='{"su": "True"}')
     if not os.path.exists(word_path):
         await mk('file', word_path, 'w', content='123456789\n')
-    if not os.path.exists(limit_level):
-        bot = nonebot.get_bot()
-        logger.info('创建违禁词监控等级配置文件,分群设置,默认easy')
-        g_list = (await bot.get_group_list())
-        level_dict = {}
-        for group in g_list:
-            level_dict.update({str(group['group_id']): 'easy'})
-        with open(limit_level, 'w', encoding='utf-8') as lwp:
-            lwp.write(f"{json.dumps(level_dict)}")
-            lwp.close()
     if not os.path.exists(switcher_path):
         bot = nonebot.get_bot()
         logger.info('创建开关配置文件,分群设置, 图片检测和违禁词检测默认关,其他默认开')
@@ -142,12 +130,9 @@ async def init():
         with open(switcher_path, 'w', encoding='utf-8') as swp:
             swp.write(f"{json.dumps(switcher_dict)}")
             swp.close()
-    if not os.path.exists(limit_word_path_easy):  # 要联网的都丢最后面去
-        await mk('file', limit_word_path_easy, 'w',
+    if not os.path.exists(limit_word_path):  # 要联网的都丢最后面去
+        await mk('file', limit_word_path, 'w',
                  url='https://fastly.jsdelivr.net/gh/yzyyz1387/nwafu/f_words/f_word_easy', dec='简单违禁词词库')
-    if not os.path.exists(limit_word_path):
-        await mk('file', limit_word_path, 'w', url='https://fastly.jsdelivr.net/gh/yzyyz1387/nwafu/f_words/f_word_s',
-                 dec='严格违禁词词库')
     if not os.path.exists(ttf_name):
         await mk('file', ttf_name, 'wb', url='https://fastly.jsdelivr.net/gh/yzyyz1387/blogimages/msyhblod.ttf',
                  dec='资源字体')
@@ -158,14 +143,14 @@ async def init():
 
 
 async def mk(type_, path_, *mode, **kwargs):
-    '''
+    """
     创建文件夹 下载文件
     :param type_: ['dir', 'file']
     :param path_: Path
     :param mode: ['wb', 'w']
     :param kwargs: ['url', 'content', 'dec', 'info'] 文件地址 写入内容 描述信息 和 额外信息
     :return: None
-    '''
+    """
     if 'info' in kwargs:
         logger.info(kwargs['info'])
     if type_ == 'dir':
@@ -199,14 +184,14 @@ async def mk(type_, path_, *mode, **kwargs):
 
 
 async def banSb(gid: int, ban_list: list, time: int = None, scope: list = None):
-    '''
+    """
     构造禁言
     :param gid: 群号
     :param time: 时间（s)
     :param ban_list: at列表
     :param scope: 用于被动检测禁言的时间范围
     :return:禁言操作
-    '''
+    """
     if 'all' in ban_list:
         yield nonebot.get_bot().set_group_whole_ban(
             group_id=gid,
@@ -232,11 +217,11 @@ async def banSb(gid: int, ban_list: list, time: int = None, scope: list = None):
 
 
 async def replace_tmr(msg: str) -> str:
-    '''
+    """
     原始消息简单处理
     :param msg: 消息字符串
     :return: 去除cq码,链接等
-    '''
+    """
     find_cq = re.compile(r"(\[CQ:.*])")
     find_link = re.compile("(https?://.*[^\u4e00-\u9fa5])")
     cq_code = re.findall(find_cq, msg)
@@ -249,9 +234,9 @@ async def replace_tmr(msg: str) -> str:
 
 
 async def participle_simple_handle() -> list[str]:
-    '''
+    """
     wordcloud停用词
-    '''
+    """
     prep_ = ['么', '了', '与', '不', '且', '之', '为', '兮', '其', '到', '云', '阿', '却', '个',
              '以', '们', '价', '似', '讫', '诸', '取', '若', '得', '逝', '将', '夫', '头', '只',
              '吗', '向', '吧', '呗', '呃', '呀', '员', '呵', '呢', '哇', '咦', '哟', '哉', '啊',
@@ -368,10 +353,10 @@ def bytes_to_base64(data):
 
 
 async def load(path) -> Optional[dict]:
-    '''
+    """
     加载json文件
     :return: Optional[dict]
-    '''
+    """
     try:
         with open(path, mode='r', encoding='utf-8') as f:
             contents_ = f.read()
@@ -383,23 +368,23 @@ async def load(path) -> Optional[dict]:
 
 
 async def upload(path, dict_content) -> None:
-    '''
+    """
     更新json文件
     :param path: 路径
     :param dict_content: python对象，字典
-    '''
+    """
     with open(path, mode='w', encoding='utf-8') as c:
         c.write(json.dumps(dict_content, ensure_ascii=False, indent=2))
         c.close()
 
 
 async def check_func_status(func_name: str, gid: str) -> bool:
-    '''
+    """
     检查某个群的某个功能是否开启
     :param func_name: 功能名
     :param gid: 群号
     :return: bool
-    '''
+    """
     funcs_status = (await load(switcher_path))
     if funcs_status is None:
         raise FileNotFoundError(switcher_path)
@@ -416,25 +401,20 @@ async def check_func_status(func_name: str, gid: str) -> bool:
             #                                                              '请重新发送指令继续之前的操作')
             logger.info('错误发生在 utils.py line 398')
         funcs_status.update({str(gid): {'admin': True, 'requests': True, 'wordcloud': True,
-                                        'auto_ban': True, 'img_check': True, 'word_analyze': True, 'welcome': True}})
+                                        'auto_ban': True, 'img_check': True, 'word_analyze': True}, 'welcome': True})
         await upload(switcher_path, funcs_status)
-
-        level = await load(limit_level)
-        level.update({str(gid): 'easy'})
-        await upload(limit_level, level)
-        # raise # 抛出异常阻断后面的逻辑代码？
         return False  # 直接返回 false
 
 
 async def del_txt_line(path: Path, matcher: Matcher, event: GroupMessageEvent, args: Message, dec: str) -> None:
-    '''
+    """
     分群、按行删除txt内容
     :param path: 文件父级路径（文件以群号命名）
     :param matcher: matcher
     :param event: 事件
     :param args: 文本
     :param dec: 描述
-    '''
+    """
     gid = str(event.group_id)
     logger.info(args)
     if args:
@@ -468,14 +448,14 @@ async def del_txt_line(path: Path, matcher: Matcher, event: GroupMessageEvent, a
 
 
 async def add_txt_line(path: Path, matcher: Matcher, event: GroupMessageEvent, args: Message, dec: str) -> None:
-    '''
+    """
     分群、按行添加txt内容
     :param path: 文件父级路径（文件以群号命名）
     :param matcher: matcher
     :param event: 事件
     :param args: 文本
     :param dec: 描述
-    '''
+    """
     gid = str(event.group_id)
     logger.info(args)
     if args:
@@ -512,14 +492,14 @@ async def add_txt_line(path: Path, matcher: Matcher, event: GroupMessageEvent, a
 
 
 async def get_txt_line(path: Path, matcher: Matcher, event: GroupMessageEvent, args: Message, dec: str) -> None:
-    '''
+    """
     分群、按行获取txt内容
     :param path: 文件父级路径（文件以群号命名）
     :param matcher: matcher
     :param event: 事件
     :param args: 文本
     :param dec: 描述
-    '''
+    """
     gid = str(event.group_id)
     try:
         this_path = path / f"{str(gid)}.txt"
@@ -537,14 +517,14 @@ async def get_txt_line(path: Path, matcher: Matcher, event: GroupMessageEvent, a
 
 
 async def change_s_title(bot: Bot, matcher: Matcher, gid: int, uid: int, s_title: Optional[str]):
-    '''
+    """
     改头衔
     :param bot: bot
     :param matcher: matcher
     :param gid: 群号
     :param uid: 用户号
     :param s_title: 头衔
-    '''
+    """
     try:
         await bot.set_group_special_title(
             group_id=gid,
@@ -558,7 +538,7 @@ async def change_s_title(bot: Bot, matcher: Matcher, gid: int, uid: int, s_title
 
 
 async def get_user_violation(gid: int, uid: int, label: str, content: str, add_: bool = True) -> int:
-    '''
+    """
     获取用户违规情况
     :param gid: 群号
     :param uid: 用户号
@@ -566,7 +546,7 @@ async def get_user_violation(gid: int, uid: int, label: str, content: str, add_:
     :param content: 内容
     :param add_: 等级是否+1
     :return: 违规等级
-    '''
+    """
     path_grop = user_violation_info_path / f"{str(gid)}"
     path_user = path_grop / f"{str(uid)}.json"
     this_time = str(datetime.datetime.now()).replace(' ', '-')
@@ -618,11 +598,11 @@ async def error_log(gid: int, time: str, matcher: Matcher, err: str) -> None:
             logger.error(f"写入错误日志出错：{e}")
 
 
-async def sd(cmd: Type[Matcher], msg: str, at=False) -> None:
+async def sd(cmd: Type[Matcher], msg, at=False) -> None:
     if cb_notice: await cmd.send(msg, at_sender=at)
 
 
-async def log_sd(cmd: Type[Matcher], msg: str, log: str = None, at=False, err=False) -> None:
+async def log_sd(cmd: Type[Matcher], msg, log: str = None, at=False, err=False) -> None:
     (logger.error if err else logger.info)(log if log else msg)
     await sd(cmd, msg, at)
 

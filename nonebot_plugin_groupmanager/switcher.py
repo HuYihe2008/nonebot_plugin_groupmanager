@@ -5,16 +5,15 @@
 # @Email   :  youzyyz1384@qq.com
 # @File    : switcher.py
 # @Software: PyCharm
-from .utils import load, upload, fi, log_fi
-from .path import *
-from nonebot import logger, on_command
-from nonebot.typing import T_State
-from nonebot.params import State
+from nonebot import on_command
 from nonebot.adapters.onebot.v11 import Bot, GroupMessageEvent, MessageSegment, ActionFailed
 from nonebot.adapters.onebot.v11.permission import GROUP_ADMIN, GROUP_OWNER
 from nonebot.permission import SUPERUSER
-import os
+from nonebot.typing import T_State
 from pyppeteer import launch
+
+from .path import *
+from .utils import load, upload, fi, log_fi
 
 switcher = on_command('开关', priority=1, block=True, permission=SUPERUSER | GROUP_ADMIN | GROUP_OWNER)
 
@@ -72,25 +71,25 @@ async def _(bot: Bot, event: GroupMessageEvent):
 
 
 async def save_image(url, img_path):
-    '''
+    """
     导出图片
     :param url: 在线网页的url
     :param img_path: 图片存放位置
     :return:
-    '''
+    """
     browser = await launch(options={'args': ['--no-sandbox']}, handleSIGINT=False)
     page = await browser.newPage()
     # 加载指定的网页url
     await page.goto(url)
     # 设置网页显示尺寸
     await page.setViewport({'width': 1920, 'height': 1080})
-    '''
+    """
     path: 图片存放位置
     clip: 位置与图片尺寸信息
         x: 网页截图的x坐标
         y: 网页截图的y坐标
         width: 图片宽度
         height: 图片高度
-    '''
+    """
     await page.screenshot({'path': img_path, 'clip': {'x': 0, 'y': 0, 'width': 320, 'height': 400}})
     await browser.close()
